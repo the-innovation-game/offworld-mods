@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+    <Nullable>enable</Nullable>
+	<LangVersion>8.0</LangVersion>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<MyDocumentsDir>$([System.Environment]::GetFolderPath(SpecialFolder.MyDocuments))</MyDocumentsDir>
+	<WindowsModsDir>$(MyDocumentsDir)\My Games\Offworld\Mods</WindowsModsDir>
+	<MacModsDir>$(MyDocumentsDir)\Library\Application Support\Offworld\Mods</MacModsDir>
+	<OffworldLibsDir>$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 271240@InstallLocation)\Offworld_Data\Managed</OffworldLibsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(OffworldLibsDir)\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(OffworldLibsDir)\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(OffworldLibsDir)\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(OffworldLibsDir)\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Compile Include="..\..\offworld-challenge\Offworld.Algorithms\*.cs">
+		  <Link>Algorithms\%(RecursiveDir)/%(FileName)%(Extension)</Link>
+	  </Compile>
+	  <Compile Include="..\..\offworld-challenge\Offworld.MyGameCore\*.cs">
+		  <Link>MyGameCore\%(RecursiveDir)/%(FileName)%(Extension)</Link>
+	  </Compile>
+  </ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Lib.Harmony" Version="2.2.2"/>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<MyMod Include="$(TargetDir)$(ProjectName).dll" />
+		<Harmony Include="$(TargetDir)0Harmony.dll" />
+	</ItemGroup>
+
+	<Target Name="WindowsCopyDLLs" AfterTargets="Build" Condition="Exists($(WindowsModsDir))">
+		<Copy SourceFiles="@(MyMod);@(Harmony)" DestinationFolder="$(WindowsModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(MyMod) -&gt; $(WindowsModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(Harmony) -&gt; $(WindowsModsDir)\$(ProjectName)" />
+	</Target>
+	<Target Name="MacCopyDLLs" AfterTargets="Build" Condition="Exists($(MacModsDir))">
+		<Copy SourceFiles="@(MyMod);@(Harmony)" DestinationFolder="$(MacModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(MyMod) -&gt; $(MacModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(Harmony) -&gt; $(MacModsDir)\$(ProjectName)" />
+	</Target>
+</Project>

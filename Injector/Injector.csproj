@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+    <Nullable>enable</Nullable>
+	<LangVersion>8.0</LangVersion>
+	<MyDocumentsDir>$([System.Environment]::GetFolderPath(SpecialFolder.MyDocuments))</MyDocumentsDir>
+	<WindowsModsDir>$(MyDocumentsDir)\My Games\Offworld\Mods</WindowsModsDir>
+	<MacModsDir>$(MyDocumentsDir)\Library\Application Support\Offworld\Mods</MacModsDir>
+	<OffworldLibsDir>$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 271240@InstallLocation)\Offworld_Data\Managed</OffworldLibsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Reference Include="Assembly-CSharp-firstpass">
+		<HintPath>$(OffworldLibsDir)\Assembly-CSharp-firstpass.dll</HintPath>
+	</Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(OffworldLibsDir)\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+	<ItemGroup>
+		<MyMod Include="$(TargetDir)$(ProjectName).dll" />
+	</ItemGroup>
+	<Target Name="WindowsCopyDLLs" AfterTargets="Build" Condition="Exists($(WindowsModsDir))">
+		<Copy
+		  SourceFiles="@(MyMod)"
+		  DestinationFolder="$(WindowsModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(MyMod) -> $(WindowsModsDir)\$(ProjectName)" />
+	</Target>
+	<Target Name="MacCopyDLLs" AfterTargets="Build" Condition="Exists($(MacModsDir))">
+		<Copy
+		  SourceFiles="@(MyMod)"
+		  DestinationFolder="$(MacModsDir)\$(ProjectName)" />
+		<Message Importance="high" Text="Copied @(MyMod) -> $(MacModsDir)\$(ProjectName)" />
+	</Target>
+</Project>
