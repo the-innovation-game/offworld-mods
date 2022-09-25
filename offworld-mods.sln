@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheInnovationGame", "TheInnovationGame\TheInnovationGame.csproj", "{B4D69570-94BE-45F4-B24D-56B113BA97C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Injector", "Injector\Injector.csproj", "{FF90915D-FD6F-41B6-A718-D2353803B2FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4D69570-94BE-45F4-B24D-56B113BA97C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4D69570-94BE-45F4-B24D-56B113BA97C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4D69570-94BE-45F4-B24D-56B113BA97C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4D69570-94BE-45F4-B24D-56B113BA97C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF90915D-FD6F-41B6-A718-D2353803B2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF90915D-FD6F-41B6-A718-D2353803B2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF90915D-FD6F-41B6-A718-D2353803B2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF90915D-FD6F-41B6-A718-D2353803B2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE864CA3-2ADE-4B43-80DF-4DB6357C4EF3}
+	EndGlobalSection
+EndGlobal
