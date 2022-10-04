@@ -68,7 +68,7 @@ The mods are developed for **Offworld Trading Company** version `1.23.44549` fro
     * (Mac) `<Documents>\Library\Application Support\Offworld\Logs\output.txt`
 
 ## Support
-[Join our Discord](https://discord.gg/SESJzxwY)
+[Join our Discord](https://discord.gg/YTJGVpZD)
 
 ## License
 
